@@ -1,0 +1,14 @@
+here's an example of using a CHECK constraint to enforce a rule on a column that can only have a certain set of values:
+
+Suppose you have a table called inventory that stores information about products in your inventory, including their product_id, product_name, category, and quantity. You want to ensure that the category column value can only be one of three categories: "electronics", "books", or "apparel". You can use a CHECK constraint to enforce this rule:
+ 
+CREATE TABLE inventory (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(50),
+    category VARCHAR(10) CHECK (category IN ('electronics', 'books', 'apparel')),
+    quantity INT
+);
+
+In this example, the inventory table has a CHECK constraint named chk_category that ensures that the category column value is one of the allowed categories using the IN operator. If an attempt is made to insert or update a record in the inventory table with a category value that is not one of the allowed categories, the CHECK constraint will reject the insertion or update and raise an error.
+
+This can help ensure that your data is consistent and valid, and prevent typos or other mistakes from entering incorrect values in the category column.
